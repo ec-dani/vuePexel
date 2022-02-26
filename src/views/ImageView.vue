@@ -7,18 +7,27 @@
       @keyup.enter="hola(query)"
     />
   </div>
-  <p class="text-yellow-700"
+  <div class="flex items-center justify-center w-screen flex-wrap">
+  <image-comp 
   v-for="(resultado, index) in resultados.values"
-  :key="index">
-   {{resultado.id}}
-  </p>
+  :key="index"
+  :id="resultado.id"
+  :author="resultado.photographer"
+  :image="resultado.URLoriginal"
+  :photographer_url="resultado.photographer_url"
+  :url="resultado.url"
+  :alt="resultado.alt">
+  </image-comp>
+  </div>
 </template>
 <script>
+import ImageComp from '../components/ImageComp.vue'
 import { ref } from "vue";
 import axios from "axios";
 //Probamos con resultado.values en el v-for
 export default {
-  name: "imeage-view",
+  name: "image-view",
+  components:{ ImageComp},
   setup() {
     let resultados = ref([]);
     return {
@@ -43,7 +52,10 @@ export default {
             let info = {
               'id': elem.id,
               'photographer': elem.photographer,
-              'URLoriginal': elem.src.original,
+              'URLoriginal': elem.src.medium,
+              'photographer_url': elem.photographer_url,
+              'url': elem.url,
+              'alt':elem.alt
             };
             return info;
           })
