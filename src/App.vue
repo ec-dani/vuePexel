@@ -1,7 +1,7 @@
 <template>
-  <nav class="flex justify-center text-3xl py-5 ">
-    <router-link  to="/">Image</router-link> |
-    <router-link to="/video">Video</router-link>
+  <nav class="flex justify-center text-3xl mx-3 py-4">
+    <router-link  to="/">Image </router-link> |
+    <router-link to="/video"> Video </router-link>
   </nav>
   <router-view />
 </template>
